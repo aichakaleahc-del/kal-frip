@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KaléFrip Market – Friperie en ligne au Maroc | Vêtements de seconde main</title>
+<meta name="description" content="KaléFrip Market : achète et vends des vêtements de seconde main au Maroc. Friperie en ligne, simple et sûre, directement entre particuliers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kalefrip.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KaléFrip Market">
+<meta property="og:title" content="KaléFrip Market – Friperie en ligne au Maroc">
+<meta property="og:description" content="Achète et vends des vêtements de seconde main au Maroc, directement entre particuliers.">
+<meta property="og:url" content="https://kalefrip.netlify.app/">
+<meta property="og:locale" content="fr_MA">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"KaléFrip Market","url":"https://kalefrip.netlify.app/","inLanguage":"fr"}</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --surface-1:#FFFFFF; --surface-2:#F7F5F0; --text-primary:#16201B;
+  --text-secondary:#4B564F; --text-muted:#8C968E; --border:#E6E2D9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--surface-1);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font-family:inherit}
+.kf-app{position:relative;min-height:100vh;background:var(--surface-1)}
+.kf-wrap{max-width:1540px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
+.kf-view{padding-bottom:0}
+
+/* header */
+.kfhdr{background:#0A3D2B;position:sticky;top:0;z-index:50}
+.kfhdr .kf-wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.kflogo{display:flex;align-items:center;gap:6px;cursor:pointer;text-decoration:none}
+.kflogo>i{color:#F5A623;font-size:28px;margin-right:4px}
+.kflogo .k1,.kflogo .k2{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:32px;letter-spacing:-0.5px;line-height:1}
+.kflogo .k1{color:#F5A623}
+.kflogo .k2{color:#fff;margin-left:2px}
+.kflogo .k3{color:rgba(255,255,255,0.55);font-size:15px;margin-left:8px;align-self:flex-start;margin-top:2px}
+.kfbtns{display:flex;gap:10px;align-items:center}
+.kfbtns button{border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;padding:12px 26px;font-family:inherit;transition:background .15s,transform .15s}
+.btn-lg{background:#1E5140;color:#fff;border:1px solid rgba(255,255,255,0.18)!important}
+.btn-lg:hover{background:#25604B}
+.btn-sl{background:#F5A623;color:#0A3D2B}
+.btn-sl:hover{background:#FFB53A}
+.kf-headavatar{width:44px;height:44px;border-radius:50%;background:#F5A623;color:#0A3D2B;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* top navigation (desktop) */
+.kf-topnav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:78px;z-index:49}
+.kf-topnav .kf-wrap{display:flex;gap:10px;height:58px;align-items:stretch}
+.kf-toplink{background:none;border:none;font-size:17px;font-weight:500;color:#5E6B63;padding:0 28px;cursor:pointer;position:relative;transition:color .15s}
+.kf-toplink:hover{color:#0A3D2B}
+.kf-toplink.on{color:#0A3D2B;font-weight:600}
+.kf-toplink.on::after{content:"";position:absolute;left:28px;right:28px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:#F5A623}
+
+/* hero */
+.kfhero{background:#0A3D2B;padding:90px 18px 110px;text-align:center;position:relative;overflow:hidden}
+.kfring1{position:absolute;top:-140px;right:4%;width:425px;height:425px;border-radius:50%;border:100px solid rgba(245,166,35,0.09);pointer-events:none}
+.kfring2{position:absolute;bottom:-150px;left:3%;width:325px;height:325px;border-radius:50%;border:80px solid rgba(245,166,35,0.09);pointer-events:none}
+.kfhero>*:not(.kfring1):not(.kfring2):not(.kfglow){position:relative}
+.kfglow{position:absolute;inset:-20%;pointer-events:none;background:radial-gradient(circle at 30% 40%,rgba(245,166,35,0.10),transparent 45%),radial-gradient(circle at 75% 65%,rgba(37,96,75,0.55),transparent 50%);animation:kfGlow 18s ease-in-out infinite alternate}
+.kfring1{animation:kfFloat1 14s ease-in-out infinite alternate}
+.kfring2{animation:kfFloat2 17s ease-in-out infinite alternate}
+@keyframes kfGlow{0%{transform:translate3d(-4%,-3%,0) scale(1)}100%{transform:translate3d(4%,3%,0) scale(1.08)}}
+@keyframes kfFloat1{0%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(-40px,30px,0) scale(1.06)}}
+@keyframes kfFloat2{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(35px,-25px,0) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.kfglow,.kfring1,.kfring2{animation:none}}
+.kftag{display:inline-flex;align-items:center;gap:5px;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.4);border-radius:30px;padding:6px 18px;margin-bottom:26px}
+.kftag span{color:#F5A623;font-size:16px;font-weight:700;letter-spacing:0.2px}
+.kfhero h1{font-family:"Fraunces",Georgia,serif;color:#fff;font-size:clamp(34px,4.4vw,64px);font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:28px}
+.kfhero h1 em{color:#F5A623;font-style:italic;font-weight:600}
+.kfhero p{color:rgba(255,255,255,0.72);font-size:clamp(15px,1.25vw,21px);margin:0 auto 42px;line-height:1.6;max-width:640px}
+.kfsrch{display:flex;background:var(--surface-2);border-radius:12px;overflow:hidden;max-width:850px;margin:0 auto 48px;border:1px solid #F5A623;box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.kfsrch input{flex:1;min-width:0;border:none;outline:none;padding:0 26px;height:66px;font-size:clamp(15px,1.2vw,19px);background:transparent;color:var(--text-primary);font-family:inherit}
+.kfsrch input::placeholder{color:#6F7871}
+.kfsrch button{background:#F5A623;border:none;padding:0 36px;color:#0A3D2B;font-weight:700;font-size:clamp(14px,1.1vw,18px);cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .15s}
+.kfsrch button:hover{background:#FFB53A}
+.kfstats{display:flex;justify-content:center;gap:clamp(36px,5vw,80px)}
+.kfstv{color:#F5A623;font-weight:800;font-size:clamp(24px,2.3vw,34px);line-height:1.2}
+.kfstl{color:rgba(255,255,255,0.62);font-size:clamp(13px,1.1vw,18px);margin-top:4px}
+
+/* catalogue */
+.kfcats{background:var(--surface-2);border-bottom:1px solid var(--border)}
+.kfcats .kf-wrap{display:flex;gap:10px;overflow-x:auto;padding-top:20px;padding-bottom:20px;scrollbar-width:none}
+.kfcats .kf-wrap::-webkit-scrollbar{display:none}
+.kfcat{background:var(--surface-1);color:var(--text-secondary);border:1px solid var(--border);border-radius:30px;padding:10px 22px;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background 0.12s,color 0.12s,border-color 0.12s}
+.kfcat.on,.kfcat:hover{background:#0A3D2B;color:#fff;border-color:#0A3D2B}
+.kfsec{padding:40px 0 56px}
+.kfshdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.kfshdr h2{font-family:"Fraunces",Georgia,serif;font-size:clamp(22px,2vw,30px);font-weight:700;color:var(--text-primary)}
+.kfshdr span{font-size:14px;color:var(--text-muted)}
+.kfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.kfcard{background:var(--surface-2);border-radius:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:transform 0.15s,box-shadow .15s}
+.kfcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(10,61,43,.1)}
+.kfthumb{aspect-ratio:4/3.4;display:flex;align-items:center;justify-content:center;position:relative;background-size:contain;background-position:center;background-repeat:no-repeat}
+.kfthumb i{font-size:48px}
+.kfbadge{position:absolute;top:10px;right:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:3px 9px;font-size:11px;font-weight:600;color:var(--text-secondary)}
+.kfcinfo{padding:13px 15px 15px}
+.kfcname{font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:4px;line-height:1.35}
+.kfcprice{font-size:18px;font-weight:800;color:#0A3D2B;margin-bottom:8px}
+.kfcmeta{display:flex;justify-content:space-between;gap:8px}
+.kfcmeta span{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
+.kfcmeta i{font-size:13px}
+.kfempty{text-align:center;padding:60px 0;color:var(--text-muted);font-size:15px}
+.kfempty i{font-size:44px;display:block;margin-bottom:12px;opacity:0.5}
+.kfhow{background:#0A3D2B;padding:72px 0}
+.kfhow h2{font-family:"Fraunces",Georgia,serif;color:#fff;font-size:clamp(26px,2.6vw,40px);font-weight:700;text-align:center;margin-bottom:8px}
+.kfhow .sub{color:rgba(255,255,255,0.6);text-align:center;font-size:16px;margin-bottom:40px}
+.kfsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kfstep{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+.kfstepn{background:#F5A623;color:#0A3D2B;font-weight:800;min-width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.kfstept{color:#fff;font-weight:700;font-size:17px;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.kfstept i{font-size:18px;color:#F5A623}
+.kfstepd{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.6}
+.kfcta{padding:72px 18px;text-align:center;background:var(--surface-1)}
+.kfcta h2{font-family:"Fraunces",Georgia,serif;font-size:clamp(24px,2.3vw,34px);font-weight:700;color:var(--text-primary);margin-bottom:10px}
+.kfcta p{color:var(--text-secondary);font-size:17px;margin-bottom:28px}
+.kfcta button{background:#0A3D2B;color:#fff;border:none;border-radius:10px;padding:16px 34px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.kffoot{background:#0A3D2B;padding:40px 18px;text-align:center}
+.kffl .f1,.kffl .f2{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:24px}
+.kffl .f1{color:#F5A623}
+.kffl .f2{color:#fff;margin-left:4px}
+.kffs{color:rgba(255,255,255,0.5);font-size:14px;margin-top:8px}
+.kfflag{display:inline-block;flex:none;width:1.4em;height:0.94em;min-width:16px;min-height:11px;object-fit:cover;vertical-align:-0.15em;border-radius:2px;margin-right:4px}
+.kffc{color:rgba(255,255,255,0.3);font-size:12px;margin-top:8px}
+
+/* inner pages */
+.kf-view:not(#view-home){max-width:760px;margin:0 auto;min-height:calc(100vh - 136px);padding-bottom:40px}
+#view-product{max-width:1180px!important}
+@media(min-width:900px){
+  .kf-prodlayout{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:28px 16px}
+  .kf-prodlayout .kf-prodimg{height:520px;border-radius:16px}
+  .kf-prodlayout .kf-prodbody{padding:0}
+}
+
+/* view header (back) */
+.kf-viewhdr{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--surface-1);z-index:40}
+.kf-back{background:var(--surface-2);border:0.5px solid var(--border);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-primary);flex:none}
+.kf-viewhdr span{font-size:14px;font-weight:600;color:var(--text-primary)}
+
+/* forms */
+.kf-form{display:flex;flex-direction:column;gap:13px;padding:18px 16px}
+.kf-form label{font-size:12px;font-weight:600;color:var(--text-secondary);display:flex;flex-direction:column;gap:5px}
+.kf-form input,.kf-form select,.kf-form textarea{border:0.5px solid var(--border);border-radius:8px;padding:11px 12px;font-size:13px;background:var(--surface-1);color:var(--text-primary);outline:none}
+.kf-form input:focus,.kf-form select:focus,.kf-form textarea:focus{border-color:#0A3D2B}
+.kf-form textarea{resize:vertical;min-height:80px}
+.kf-submit{background:#0A3D2B;color:#fff;border:none;border-radius:10px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
+.kf-toast.err{background:#B03520}
+.kf-linkbtn{background:none;border:none;color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;padding:4px}
+.kf-delbtn{display:block;width:100%;border:none;border-top:0.5px solid var(--border);background:none;color:#B03520;font-size:11px;font-weight:700;padding:8px;cursor:pointer}
+.kf-toast{margin:0 16px 14px;background:#0A3D2B;color:#fff;font-size:12px;font-weight:600;padding:11px 14px;border-radius:9px;text-align:center}
+
+/* auth tabs */
+.kf-authtabs{display:flex;margin:14px 16px 0;background:var(--surface-2);border-radius:10px;padding:3px;border:0.5px solid var(--border)}
+.kf-atab{flex:1;border:none;background:transparent;padding:9px;font-size:12px;font-weight:700;border-radius:8px;cursor:pointer;color:var(--text-secondary);font-family:inherit}
+.kf-atab.on{background:#0A3D2B;color:#fff}
+
+/* older mobile browsers without aspect-ratio: keep photo boxes from collapsing to 0 height */
+@supports not (aspect-ratio:1/1){
+  .kfthumb::before{content:"";display:block;padding-top:85%}
+  .kf-phototile::before{content:"";display:block;padding-top:100%}
+  .kf-addtile::before,.kf-loadtile::before{display:none}
+  .kf-addtile,.kf-loadtile{min-height:70px}
+}
+/* sell photos */
+.kf-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kf-phototile{aspect-ratio:1;border-radius:9px;background-color:var(--surface-2);background-size:cover;background-position:center;position:relative;border:0.5px solid var(--border)}
+.kf-phototile button{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:#B03520;color:#fff;border:2px solid var(--surface-1);font-size:12px;line-height:1;cursor:pointer}
+.kf-photofield{font-size:12px;font-weight:600;color:var(--text-secondary);display:flex;flex-direction:column;gap:5px;position:relative}
+/* not display:none: iOS browsers may never fire "change" on a hidden file input */
+.kf-fileinput{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0);pointer-events:none}
+.kf-form label.kf-addtile{gap:3px;color:var(--text-muted)}
+.kf-addtile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--text-muted);cursor:pointer;border:1.5px dashed var(--border)}
+.kf-addtile i{font-size:20px}
+.kf-addtile span{font-size:9px;font-weight:600}
+.kf-loadtile{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:9px;font-weight:600}
+.kf-pricewrap{position:relative}
+.kf-pricewrap input{padding-right:46px}
+.kf-pricesuf{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;color:var(--text-muted)}
+
+/* product view */
+.kf-prodimg{height:420px;height:min(65vh,420px);background:var(--surface-2);display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center}
+.kf-prodimg i{font-size:80px}
+.kf-prodimg{cursor:zoom-in}
+.kf-prodthumbs{display:flex;gap:8px;padding:10px 16px 0;flex-wrap:wrap}
+.kf-prodthumbs:empty{display:none}
+.kf-prodthumbs button{width:64px;height:64px;border-radius:9px;border:2px solid transparent;background:#F4EEE6 center/contain no-repeat;cursor:pointer;padding:0}
+.kf-prodthumbs button.on{border-color:#0A3D2B}
+.kf-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000;cursor:zoom-out}
+.kf-lightbox.on{display:flex}
+.kf-lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;border-radius:8px}
+@media(min-width:900px){.kf-prodthumbs{padding:12px 0 0}}
+.kf-prodbody{padding:18px 16px}
+.kf-prodbody h1{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:7px;line-height:1.35}
+.kf-prodprice{font-size:23px;font-weight:800;color:#0A3D2B;margin-bottom:10px}
+.kf-prodbadges{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap}
+.kf-pbadge{background:var(--surface-2);border:0.5px solid var(--border);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:600;color:var(--text-secondary);display:flex;align-items:center;gap:5px}
+.kf-proddesc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:18px}
+.kf-sellercard{display:flex;align-items:center;gap:11px;background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:14px}
+.kf-selleravatar{width:42px;height:42px;border-radius:50%;background:#0A3D2B;color:#F5A623;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.kf-sellerinfo div:first-child{font-size:13px;font-weight:700;color:var(--text-primary)}
+.kf-mut{font-size:11px;color:var(--text-muted);margin-top:2px}
+.kf-prodactions{display:flex;gap:9px;margin-bottom:16px}
+.kf-actcall,.kf-actwa{flex:1;border:none;border-radius:10px;padding:12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit}
+.kf-actcall{background:#0A3D2B;color:#fff}
+.kf-actwa{background:#25D366;color:#fff}
+.kf-msgform{display:flex;flex-direction:column;gap:9px}
+.kf-msgform textarea{border:0.5px solid var(--border);border-radius:9px;padding:11px;font-size:13px;min-height:64px;resize:vertical}
+.kf-msgform button{background:#F5A623;color:#0A3D2B;border:none;border-radius:9px;padding:11px;font-weight:700;font-size:12px;cursor:pointer}
+
+/* messages / profile views */
+.kf-emptywrap{text-align:center;padding:60px 20px;color:var(--text-muted)}
+.kf-emptywrap i{font-size:40px;display:block;margin-bottom:12px;opacity:.5}
+.kf-emptywrap p{font-size:13px}
+.kf-profilehead{display:flex;flex-direction:column;align-items:center;padding:26px 16px;gap:9px;background:var(--surface-2);border-bottom:0.5px solid var(--border)}
+.kf-profileavatar{width:62px;height:62px;border-radius:50%;background:#0A3D2B;color:#F5A623;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+.kf-profilehead h2{font-size:15px;font-weight:700}
+.kf-profilehead span{font-size:12px;color:var(--text-muted)}
+.kf-logout{margin:16px;background:none;border:0.5px solid var(--border);color:#B03520;border-radius:9px;padding:11px;font-size:12px;font-weight:700;cursor:pointer;width:calc(100% - 32px)}
+.kf-mylistlbl{padding:14px 16px 8px;font-size:12px;font-weight:700;color:var(--text-secondary)}
+
+
+/* bottom nav (mobile only) */
+.kf-bottomnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface-1);border-top:1px solid var(--border);justify-content:space-around;padding:7px 0 calc(7px + env(safe-area-inset-bottom));z-index:60}
+.kf-navitem{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--text-muted);font-size:10px;font-weight:700;cursor:pointer;background:none;border:none;font-family:inherit;padding:4px 8px}
+.kf-navitem i{font-size:20px}
+.kf-navitem.on{color:#0A3D2B}
+.kf-navitem.on i{color:#F5A623}
+
+@media(max-width:900px){
+  .kfsteps{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .kf-topnav{display:none}
+  .kf-bottomnav{display:flex}
+  .kf-app{padding-bottom:70px}
+  .kfhdr .kf-wrap{height:62px}
+  .kflogo>i{font-size:22px}
+  .kflogo .k1,.kflogo .k2{font-size:24px}
+  .kflogo .k3{display:none}
+  .kfbtns button{font-size:13px;padding:9px 14px}
+  .kf-headavatar{width:36px;height:36px;font-size:13px}
+  .kfhero{padding:48px 18px 56px}
+  .kfring1{width:220px;height:220px;border-width:55px;top:-70px;right:-60px}
+  .kfring2{width:170px;height:170px;border-width:42px;left:-50px;bottom:-60px}
+  .kftag span{font-size:12px}
+  .kfsrch input{height:52px;padding:0 16px}
+  .kfsrch button{padding:0 18px}
+  .kfgrid{grid-template-columns:1fr 1fr;gap:12px}
+  .kfcname{font-size:13px}
+  .kfcprice{font-size:15px}
+  .kfsec{padding:24px 0 32px}
+  .kfhow,.kfcta{padding:44px 18px}
+  .kf-view:not(#view-home){min-height:0}
+}
+</style>
+</head>
+<body>
+<div class="kf-app" id="kf-app">
+
+   <div class="kfhdr"><div class="kf-wrap">
+    <div class="kflogo" onclick="navTo('home')"><i class="ti ti-tag" aria-hidden="true"></i><span class="k1">Kalé</span><span class="k2">Frip</span><span class="k3">Market</span></div>
+    <div class="kfbtns" id="kf-headbtns">
+      <button class="btn-lg" id="kf-btn-login" onclick="navTo('profile')">Connexion</button>
+      <button class="btn-sl" onclick="navTo('sell')">Vendre</button>
+    </div>
+  </div></div>
+
+  <nav class="kf-topnav"><div class="kf-wrap">
+    <button class="kf-toplink on" data-v="home" onclick="navTo('home')">Accueil</button>
+    <button class="kf-toplink" data-v="search" onclick="navTo('search')">Chercher</button>
+    <button class="kf-toplink" data-v="sell" onclick="navTo('sell')">Vendre</button>
+    <button class="kf-toplink" data-v="messages" onclick="navTo('messages')">Messages</button>
+    <button class="kf-toplink" data-v="profile" onclick="navTo('profile')">Profil</button>
+  </div></nav>
+
+  <!-- ===== HOME ===== -->
+  <div id="view-home" class="kf-view">
+    <div class="kfhero">
+      <div class="kfglow" aria-hidden="true"></div><div class="kfring1"></div><div class="kfring2"></div>
+      <div class="kftag"><span><img class="kfflag" src="/flag-ma.svg?v=2" width="21" height="14" alt="Drapeau du Maroc"> LE MAROC ACHÈTE ET VEND</span></div>
+      <h1>Trouve des bonnes affaires<br><em>près de chez toi</em></h1>
+      <p>Achète et vends vêtements, chaussures et accessoires entre Marocains. Simple, rapide, sécurisé.</p>
+      <div class="kfsrch">
+        <input type="text" id="kf-q" placeholder="Cherche une robe, des baskets..." />
+        <button onclick="doSearch()"><i class="ti ti-search" aria-hidden="true"></i> Rechercher</button>
+      </div>
+      <div class="kfstats">
+        <div><div class="kfstv" id="kf-stat-items">0</div><div class="kfstl">Articles</div></div>
+        <div><div class="kfstv" id="kf-stat-sellers">0</div><div class="kfstl">Vendeurs</div></div>
+        <div><div class="kfstv">Gratuit</div><div class="kfstl">Publier</div></div>
+      </div>
+    </div>
+
+    <div class="kfcats"><div class="kf-wrap" id="kf-cats"></div></div>
+
+    <div class="kfsec kf-wrap">
+      <div class="kfshdr">
+        <h2 id="kf-title">Articles récents</h2>
+        <span id="kf-cnt"></span>
+      </div>
+      <div class="kfgrid" id="kf-grid"></div>
+      <div class="kfempty" id="kf-empty" style="display:none">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <p>Aucun article trouvé.</p>
+      </div>
+    </div>
+
+    <div class="kfhow">
+      <h2>Comment ça marche ?</h2>
+      <p class="sub">En 3 étapes simples</p>
+      <div class="kfsteps kf-wrap">
+        <div class="kfstep">
+          <div class="kfstepn">1</div>
+          <div>
+            <div class="kfstept"><i class="ti ti-camera" aria-hidden="true"></i> Crée ton annonce</div>
+            <div class="kfstepd">Prends une photo, mets un prix et publie gratuitement en quelques minutes.</div>
+          </div>
+        </div>
+        <div class="kfstep">
+          <div class="kfstepn">2</div>
+          <div>
+            <div class="kfstept"><i class="ti ti-message" aria-hidden="true"></i> L'acheteur te contacte</div>
+            <div class="kfstepd">Les acheteurs intéressés t'envoient un message directement via l'appli.</div>
+          </div>
+        </div>
+        <div class="kfstep">
+          <div class="kfstepn">3</div>
+          <div>
+            <div class="kfstept"><i class="ti ti-device-mobile" aria-hidden="true"></i> Paiement sécurisé</div>
+            <div class="kfstepd">Paiement par CashPlus, Wafacash ou cash à la livraison.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kfcta">
+      <h2>Tu as des affaires à vendre ?</h2>
+      <p>Publie ton annonce gratuitement en quelques minutes.</p>
+      <button onclick="navTo('sell')">Vendre maintenant — c'est gratuit</button>
+    </div>
+
+    <div class="kffoot">
+      <div class="kffl"><span class="f1">Kalé</span><span class="f2">Frip</span></div>
+      <div class="kffs"><img class="kfflag" src="/flag-ma.svg?v=2" width="21" height="14" alt="Drapeau du Maroc"> La marketplace du Maroc · Casablanca</div>
+      <div class="kffc">© 2026 KaléFrip Market. Tous droits réservés.</div>
+    </div>
+  </div>
+
+  <!-- ===== AUTH (connexion / inscription) ===== -->
+  <div id="view-auth" class="kf-view" style="display:none">
+    <div class="kf-viewhdr"><button class="kf-back" onclick="navTo('home')"><i class="ti ti-arrow-left"></i></button><span>Mon compte</span></div>
+    <div class="kf-authtabs">
+      <button class="kf-atab on" id="tab-login" onclick="setAuthTab('login')">Connexion</button>
+      <button class="kf-atab" id="tab-register" onclick="setAuthTab('register')">Inscription</button>
+    </div>
+    <form id="form-login" class="kf-form" onsubmit="return doLogin(event)">
+      <label>Email
+        <input type="email" id="login-email" required autocomplete="email" placeholder="toi@email.com">
+      </label>
+      <label>Mot de passe
+        <input type="password" id="login-pass" required autocomplete="current-password" placeholder="••••••••">
+      </label>
+      <button type="submit" class="kf-submit">Se connecter</button>
+      <button type="button" class="kf-linkbtn" onclick="doForgot()">Mot de passe oublié ?</button>
+    </form>
+    <form id="form-register" class="kf-form" style="display:none" onsubmit="return doRegister(event)">
+      <label>Nom complet
+        <input type="text" id="reg-name" required placeholder="Yasmine Bennani">
+      </label>
+      <label>Email
+        <input type="email" id="reg-email" required autocomplete="email" placeholder="toi@email.com">
+      </label>
+      <label>Téléphone
+        <input type="tel" id="reg-phone" required placeholder="+212 6XX-XXXXXX">
+      </label>
+      <label>Mot de passe (6 caractères min.)
+        <input type="password" id="reg-pass" required minlength="6" autocomplete="new-password" placeholder="••••••••">
+      </label>
+      <label>Ville
+        <select id="reg-city">
+          <option>Casablanca</option><option>Rabat</option><option>Marrakech</option>
+          <option>Fès</option><option>Tanger</option><option>Agadir</option>
+        </select>
+      </label>
+      <button type="submit" class="kf-submit">Créer mon compte</button>
+    </form>
+    <form id="form-reset" class="kf-form" style="display:none" onsubmit="return doResetPassword(event)">
+      <label>Nouveau mot de passe
+        <input type="password" id="reset-pass" required minlength="6" autocomplete="new-password" placeholder="••••••••">
+      </label>
+      <button type="submit" class="kf-submit">Enregistrer le mot de passe</button>
+    </form>
+    <div id="auth-msg" class="kf-toast" style="display:none"></div>
+  </div>
+
+  <!-- ===== VENDRE ===== -->
+  <div id="view-sell" class="kf-view" style="display:none">
+    <div class="kf-viewhdr"><button class="kf-back" onclick="navTo('home')"><i class="ti ti-arrow-left"></i></button><span>Nouvelle annonce</span></div>
+    <form id="form-sell" class="kf-form" onsubmit="return doSellSubmit(event)">
+      <div class="kf-photofield">Photos (4 max)
+        <div class="kf-photos" id="sell-photos"></div>
+        <input type="file" id="sell-file" class="kf-fileinput" accept="image/*" multiple onchange="onPhotoSelect(event)" oninput="onPhotoSelect(event)">
+        <div id="photo-msg" class="kf-toast" style="display:none;margin:4px 0 0"></div>
+      </div>
+      <label>Titre de l'annonce
+        <input type="text" id="sell-title" required placeholder="Ex : Robe pagne colorée">
+      </label>
+      <label>Catégorie
+        <select id="sell-cat" required></select>
+      </label>
+      <label>État
+        <select id="sell-cond" required>
+          <option>Neuf</option><option>Très bon état</option><option>Bon état</option><option>État correct</option>
+        </select>
+      </label>
+      <label>Prix
+        <div class="kf-pricewrap">
+          <input type="number" id="sell-price" min="0" required placeholder="0">
+          <span class="kf-pricesuf">DH</span>
+        </div>
+      </label>
+      <label>Description
+        <textarea id="sell-desc" required placeholder="Décris l'article : taille, matière, raison de la vente..."></textarea>
+      </label>
+      <label>Ville
+        <input type="text" id="sell-loc" value="Casablanca" required>
+      </label>
+      <label>Téléphone (visible par les acheteurs)
+        <input type="tel" id="sell-phone" required placeholder="+212 6XX-XXXXXX">
+      </label>
+      <button type="submit" class="kf-submit">Publier l'annonce</button>
+    </form>
+    <div id="sell-msg" class="kf-toast" style="display:none"></div>
+  </div>
+
+  <!-- ===== PRODUIT ===== -->
+  <div id="view-product" class="kf-view" style="display:none">
+    <div class="kf-viewhdr"><button class="kf-back" onclick="navTo('home')"><i class="ti ti-arrow-left"></i></button><span>Annonce</span></div>
+    <div class="kf-prodgallery"><div class="kf-prodimg" id="prod-img" onclick="openLightbox()"></div><div class="kf-prodthumbs" id="prod-thumbs"></div></div>
+    <div class="kf-prodbody">
+      <h1 id="prod-title"></h1>
+      <div class="kf-prodprice" id="prod-price"></div>
+      <div class="kf-prodbadges" id="prod-badges"></div>
+      <p class="kf-proddesc" id="prod-desc"></p>
+      <div class="kf-sellercard">
+        <div class="kf-selleravatar" id="prod-savatar"></div>
+        <div class="kf-sellerinfo">
+          <div id="prod-sname"></div>
+          <div class="kf-mut" id="prod-sloc"></div>
+        </div>
+      </div>
+      <div class="kf-prodactions">
+        <button class="kf-actcall" onclick="callSeller()"><i class="ti ti-phone" aria-hidden="true"></i> Appeler</button>
+        <button class="kf-actwa" onclick="waSeller()"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp</button>
+      </div>
+      <form class="kf-msgform" onsubmit="return sendMsg(event)">
+        <textarea id="prod-msgtext" required placeholder="Bonjour, l'article est-il toujours disponible ?"></textarea>
+        <button type="submit">Envoyer un message</button>
+      </form>
+      <div id="prod-msgconf" class="kf-toast" style="display:none;margin-top:12px"></div>
+    </div>
+  </div>
+
+  <!-- ===== MESSAGES ===== -->
+  <div id="view-messages" class="kf-view" style="display:none">
+    <div class="kf-viewhdr"><span>Messages</span></div>
+    <div class="kf-emptywrap">
+      <i class="ti ti-message-circle" aria-hidden="true"></i>
+      <p>Aucun message pour l'instant.<br>Contacte un vendeur pour démarrer une discussion.</p>
+    </div>
+  </div>
+
+  <!-- ===== PROFIL ===== -->
+  <div id="view-profile" class="kf-view" style="display:none">
+    <div class="kf-viewhdr"><span>Profil</span></div>
+    <div id="profile-content"></div>
+  </div>
+
+  <div class="kf-bottomnav" id="kf-bottomnav">
+    <button class="kf-navitem on" data-v="home" onclick="navTo('home')"><i class="ti ti-home" aria-hidden="true"></i>Accueil</button>
+    <button class="kf-navitem" data-v="search" onclick="navTo('search')"><i class="ti ti-search" aria-hidden="true"></i>Chercher</button>
+    <button class="kf-navitem" data-v="sell" onclick="navTo('sell')"><i class="ti ti-square-rounded-plus" aria-hidden="true"></i>Vendre</button>
+    <button class="kf-navitem" data-v="messages" onclick="navTo('messages')"><i class="ti ti-message-circle" aria-hidden="true"></i>Messages</button>
+    <button class="kf-navitem" data-v="profile" onclick="navTo('profile')"><i class="ti ti-user" aria-hidden="true"></i>Profil</button>
+  </div>
+</div>
+
+<script>
+const idp=()=>import("https://esm.sh/@netlify/identity@2.0.0");
+
+const cats=["Tous","Femme","Homme","Chaussures","Accessoires","Enfants"];
+let items=[];
+let act="Tous",q="";
+let user=null, currentProduct=null, sellPhotos=[], photosLoading=0, currentView="home", pendingView=null;
+
+function fmt(n){return n.toLocaleString()+" DH";}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function initialsOf(n){return String(n||"?").split(" ").filter(Boolean).map(w=>w[0]).join("").slice(0,2).toUpperCase()||"?";}
+function userName(){return user?(user.name||user.email.split("@")[0]):"";}
+
+function apiRowToItem(r){
+  return {id:r.id,n:r.title,p:r.price,c:r.condition,cat:r.category,s:r.seller,sid:r.sellerId,bg:"#EFE5D8",ic:"ti-tag",cl:"#0A3D2B",img:r.photos[0]||null,photos:r.photos||[],loc:r.location,phone:r.phone,desc:r.description};
+}
+
+async function loadItems(){
+  try{
+    const res=await fetch("/api/items");
+    if(!res.ok) throw new Error(res.status);
+    items=(await res.json()).map(apiRowToItem);
+  }catch(err){console.error(err);}
+  renderGrid();
+  if(currentView==="profile"&&user) renderProfile();
+}
+
+function renderCats(){
+  document.getElementById("kf-cats").innerHTML=cats.map(c=>`<button class="kfcat${c===act?" on":""}" onclick="setCat('${c}')">${c}</button>`).join("");
+}
+function thumbHtml(i,iconSize){
+  if(i.img) return "";
+  return `<i class="ti ${i.ic}" style="color:${i.cl};font-size:${iconSize}px" aria-hidden="true"></i>`;
+}
+function thumbStyle(i){return i.img?`background:#F4EEE6 url('${esc(i.img)}') center/contain no-repeat`:`background:${i.bg}`;}
+function renderGrid(){
+  const f=items.filter(i=>(act==="Tous"||i.cat===act)&&i.n.toLowerCase().includes(q.toLowerCase()));
+  document.getElementById("kf-cnt").textContent=f.length+" articles";
+  document.getElementById("kf-title").textContent=q?`Résultats pour "${q}"`:act==="Tous"?"Articles récents":act;
+  document.getElementById("kf-stat-items").textContent=items.length;document.getElementById("kf-stat-sellers").textContent=new Set(items.map(i=>i.sid)).size;
+  if(!f.length){document.getElementById("kf-grid").style.display="none";document.getElementById("kf-empty").style.display="block";return;}
+  document.getElementById("kf-grid").style.display="grid";document.getElementById("kf-empty").style.display="none";
+  document.getElementById("kf-grid").innerHTML=f.map(i=>`
+    <div class="kfcard" onclick="openProduct(${i.id})">
+      <div class="kfthumb" style="${thumbStyle(i)}">
+        ${thumbHtml(i,42)}
+        <div class="kfbadge">${esc(i.c)}</div>
+      </div>
+      <div class="kfcinfo">
+        <div class="kfcname">${esc(i.n)}</div>
+        <div class="kfcprice">${fmt(i.p)}</div>
+        <div class="kfcmeta">
+          <span><i class="ti ti-user" aria-hidden="true"></i>${esc(i.s)}</span>
+          <span><i class="ti ti-map-pin" aria-hidden="true"></i>${esc(i.loc)}</span>
+        </div>
+      </div>
+    </div>`).join("");
+}
+function setCat(c){act=c;renderCats();renderGrid();}
+function doSearch(){q=document.getElementById("kf-q").value;renderGrid();}
+function showToast(id,msg,isErr,ms){
+  const el=document.getElementById(id);el.textContent=msg;el.classList.toggle("err",!!isErr);el.style.display="block";
+  clearTimeout(el._t);el._t=setTimeout(()=>{el.style.display="none";},ms||3200);
+}
+
+/* ===== navigation ===== */
+function switchView(name){
+  document.querySelectorAll(".kf-view").forEach(v=>v.style.display="none");
+  document.getElementById("view-"+name).style.display="block";
+  document.querySelectorAll(".kf-navitem,.kf-toplink").forEach(b=>b.classList.toggle("on",b.dataset.v===name));
+  window.scrollTo(0,0);
+  currentView=name;
+}
+function navTo(v){
+  if(v==="search"){switchView("home");setTimeout(()=>document.getElementById("kf-q").focus(),80);document.querySelectorAll(".kf-navitem,.kf-toplink").forEach(b=>b.classList.toggle("on",b.dataset.v==="search"));return;}
+  if(v==="sell"){
+    if(!user){pendingView="sell";setAuthTab("login");switchView("auth");showToast("auth-msg","Connecte-toi pour publier une annonce.");return;}
+    prefillSell();switchView("sell");return;
+  }
+  if(v==="messages"){switchView("messages");return;}
+  if(v==="profile"){if(user){renderProfile();switchView("profile");}else{pendingView=null;switchView("auth");}return;}
+  switchView("home");
+}
+
+/* ===== auth ===== */
+function setAuthTab(t){
+  document.getElementById("tab-login").classList.toggle("on",t==="login");
+  document.getElementById("tab-register").classList.toggle("on",t==="register");
+  document.getElementById("form-login").style.display=t==="login"?"flex":"none";
+  document.getElementById("form-register").style.display=t==="register"?"flex":"none";
+  document.getElementById("form-reset").style.display=t==="reset"?"flex":"none";
+  document.querySelector(".kf-authtabs").style.display=t==="reset"?"none":"flex";
+}
+function renderHeader(){
+  const wrap=document.getElementById("kf-headbtns");
+  if(user){
+    wrap.innerHTML=`<div class="kf-headavatar" onclick="navTo('profile')">${esc(initialsOf(userName()))}</div><button class="btn-sl" onclick="navTo('sell')">Vendre</button>`;
+  }else{
+    wrap.innerHTML=`<button class="btn-lg" id="kf-btn-login" onclick="navTo('profile')">Connexion</button><button class="btn-sl" onclick="navTo('sell')">Vendre</button>`;
+  }
+}
+function authErrMsg(err){
+  if(err&&err.name==="MissingIdentityError") return "La connexion n'est pas encore activée sur le site.";
+  const st=err&&err.status, m=String(err&&err.message||"").toLowerCase();
+  if(m.includes("not confirmed")) return "Confirme d'abord ton email (regarde ta boîte de réception).";
+  if(st===401||st===400&&m.includes("invalid")) return "Email ou mot de passe incorrect.";
+  if(st===403) return "Les inscriptions sont fermées pour le moment.";
+  if(st===422) return m.includes("already")?"Un compte existe déjà avec cet email.":"Vérifie ton email et ton mot de passe (6 caractères min.).";
+  if(st===429) return "Trop de tentatives, réessaie dans quelques minutes.";
+  return "Erreur de connexion, réessaie.";
+}
+function busy(form,on,label){const b=form.querySelector(".kf-submit");if(!b._l)b._l=b.textContent;b.disabled=on;b.textContent=on?label:b._l;}
+function afterLogin(msg){
+  renderHeader();
+  showToast("auth-msg",msg);
+  const target=pendingView;pendingView=null;
+  setTimeout(()=>{if(target==="sell"){prefillSell();switchView("sell");}else{renderProfile();switchView("profile");}},800);
+}
+async function doLogin(e){
+  e.preventDefault();
+  const form=e.target;busy(form,true,"Connexion...");
+  try{
+    const {login}=await idp();
+    user=await login(document.getElementById("login-email").value.trim(),document.getElementById("login-pass").value);
+    form.reset();
+    afterLogin("Connecté ! Bienvenue 👋");
+  }catch(err){console.error(err);showToast("auth-msg",authErrMsg(err),true,5000);}
+  finally{busy(form,false);}
+  return false;
+}
+async function doRegister(e){
+  e.preventDefault();
+  const form=e.target;busy(form,true,"Création...");
+  try{
+    const {signup}=await idp();
+    const name=document.getElementById("reg-name").value.trim();
+    const u=await signup(document.getElementById("reg-email").value.trim(),document.getElementById("reg-pass").value,{
+      full_name:name,phone:document.getElementById("reg-phone").value.trim(),city:document.getElementById("reg-city").value
+    });
+    form.reset();
+    if(u.emailVerified){user=u;afterLogin("Compte créé ! Bienvenue "+name.split(" ")[0]+" 🎉");}
+    else{setAuthTab("login");showToast("auth-msg","Compte créé ✅ Clique sur le lien reçu par email pour l'activer, puis connecte-toi.",false,9000);}
+  }catch(err){console.error(err);showToast("auth-msg",authErrMsg(err),true,5000);}
+  finally{busy(form,false);}
+  return false;
+}
+async function doForgot(){
+  const email=document.getElementById("login-email").value.trim();
+  if(!email){showToast("auth-msg","Entre ton email puis clique sur « Mot de passe oublié ».",true);return;}
+  try{
+    const {requestPasswordRecovery}=await idp();
+    await requestPasswordRecovery(email);
+    showToast("auth-msg","Email envoyé : clique sur le lien pour choisir un nouveau mot de passe.",false,7000);
+  }catch(err){console.error(err);showToast("auth-msg",authErrMsg(err),true);}
+}
+async function doResetPassword(e){
+  e.preventDefault();
+  const form=e.target;busy(form,true,"Enregistrement...");
+  try{
+    const {updateUser}=await idp();
+    user=await updateUser({password:document.getElementById("reset-pass").value});
+    form.reset();setAuthTab("login");
+    afterLogin("Mot de passe modifié ✅");
+  }catch(err){console.error(err);showToast("auth-msg",authErrMsg(err),true);}
+  finally{busy(form,false);}
+  return false;
+}
+async function initAuth(){
+  try{
+    const {handleAuthCallback,getUser,onAuthChange}=await idp();
+    try{
+      const res=await handleAuthCallback();
+      if(res&&res.type==="recovery"){user=res.user;renderHeader();setAuthTab("reset");switchView("auth");showToast("auth-msg","Choisis ton nouveau mot de passe.");return;}
+      if(res&&res.user){user=res.user;renderHeader();setAuthTab("login");switchView("auth");afterLogin("Email confirmé ✅ Tu es connecté.");return;}
+    }catch(err){console.error(err);setAuthTab("login");switchView("auth");showToast("auth-msg","Ce lien n'est plus valide, réessaie.",true,6000);}
+    user=await getUser();
+    renderHeader();
+    onAuthChange((ev,u)=>{user=u||null;renderHeader();});
+  }catch(err){console.error(err);}
+}
+function renderProfile(){
+  const name=userName();
+  const meta=(user&&user.userMetadata)||{};
+  const mine=items.filter(i=>i.sid===user.id);
+  let html=`
+    <div class="kf-profilehead">
+      <div class="kf-profileavatar">${esc(initialsOf(name))}</div>
+      <h2>${esc(name)}</h2>
+      <span>${esc(meta.city||"Casablanca")}, Maroc · ${esc(user.email)}</span>
+    </div>
+    <div class="kf-mylistlbl">Mes annonces (${mine.length})</div>`;
+  if(mine.length){
+    html+=`<div class="kfgrid" style="padding:0 16px 16px">`+mine.map(i=>`
+      <div class="kfcard">
+        <div onclick="openProduct(${i.id})">
+          <div class="kfthumb" style="${thumbStyle(i)}">${thumbHtml(i,42)}<div class="kfbadge">${esc(i.c)}</div></div>
+          <div class="kfcinfo"><div class="kfcname">${esc(i.n)}</div><div class="kfcprice">${fmt(i.p)}</div></div>
+        </div>
+        <button class="kf-delbtn" onclick="deleteItem(${i.id})">Supprimer</button>
+      </div>`).join("")+`</div>`;
+  }else{
+    html+=`<div class="kf-emptywrap" style="padding:30px 20px"><i class="ti ti-tag" aria-hidden="true"></i><p>Tu n'as pas encore publié d'annonce.</p></div>`;
+  }
+  html+=`<button class="kf-logout" onclick="doLogout()">Se déconnecter</button>`;
+  document.getElementById("profile-content").innerHTML=html;
+}
+async function deleteItem(id){
+  if(!confirm("Supprimer cette annonce ?"))return;
+  const res=await fetch("/api/items?id="+id,{method:"DELETE"});
+  if(!res.ok){alert("Impossible de supprimer l'annonce.");return;}
+  await loadItems();
+}
+async function doLogout(){
+  try{const {logout}=await idp();await logout();}catch(err){console.error(err);}
+  user=null;renderHeader();switchView("home");
+}
+
+/* ===== vendre ===== */
+function fillSellCat(){
+  document.getElementById("sell-cat").innerHTML=cats.filter(c=>c!=="Tous").map(c=>`<option>${c}</option>`).join("");
+}
+function prefillSell(){
+  const meta=(user&&user.userMetadata)||{};
+  const ph=document.getElementById("sell-phone"), loc=document.getElementById("sell-loc");
+  if(!ph.value&&meta.phone) ph.value=meta.phone;
+  if(meta.city&&(!loc.value||loc.value==="Casablanca")) loc.value=meta.city;
+}
+function loadImageSource(file){
+  if(window.createImageBitmap){
+    return createImageBitmap(file,{imageOrientation:"from-image"}).catch(()=>loadImageEl(file));
+  }
+  return loadImageEl(file);
+}
+function loadImageEl(file){
+  return new Promise((resolve,reject)=>{
+    const img=new Image(), url=URL.createObjectURL(file);
+    img.onload=()=>{URL.revokeObjectURL(url);resolve(img);};
+    img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("image"));};
+    img.src=url;
+  });
+}
+function readAsDataUrl(file){
+  return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(new Error("image"));fr.readAsDataURL(file);});
+}
+async function resizePhoto(file){
+  try{
+    const src=await loadImageSource(file);
+    const w=src.width||src.naturalWidth, h=src.height||src.naturalHeight;
+    const max=1280, r=Math.min(1,max/Math.max(w,h));
+    const c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));
+    c.getContext("2d").drawImage(src,0,0,c.width,c.height);
+    if(src.close) src.close();
+    let out=c.toDataURL("image/jpeg",0.82);
+    if(out.startsWith("data:image/jpeg;base64,")&&out.length>100) return out;
+    throw new Error("canvas");
+  }catch(err){
+    // dernier recours : envoyer le fichier tel quel s'il est dans un format accepté et assez léger
+    if(/^image\/(jpeg|png|webp)$/.test(file.type)&&file.size<=1024*1024) return readAsDataUrl(file);
+    throw err;
+  }
+}
+async function onPhotoSelect(e){
+  // "change" and "input" both call this; the second call finds the input already emptied
+  const all=Array.from(e.target.files||[]);
+  if(!all.length) return;
+  e.target.value="";
+  const files=all.slice(0,4-sellPhotos.length-photosLoading);
+  if(files.length<all.length) showToast("photo-msg","4 photos maximum par annonce.",true,4000);
+  photosLoading+=files.length;renderSellPhotos();
+  for(const f of files){
+    try{const out=await resizePhoto(f);photosLoading--;sellPhotos.push(out);renderSellPhotos();}
+    catch(err){photosLoading--;renderSellPhotos();console.error(err);showToast("photo-msg",/heic|heif/i.test(f.type+f.name)?"Ce format de photo (HEIC) n'est pas lu par ce navigateur. Choisis une photo JPEG ou prends une capture d'écran de la photo.":"Cette photo n'a pas pu être lue. Essaie une autre photo.",true,6000);}
+  }
+}
+function removePhoto(i){sellPhotos.splice(i,1);renderSellPhotos();}
+function renderSellPhotos(){
+  let html=sellPhotos.map((p,i)=>`<div class="kf-phototile" style="background-image:url('${p}')"><button type="button" onclick="removePhoto(${i})">×</button></div>`).join("");
+  for(let k=0;k<photosLoading;k++) html+=`<div class="kf-phototile kf-loadtile">Chargement...</div>`;
+  if(sellPhotos.length+photosLoading<4) html+=`<label for="sell-file" class="kf-phototile kf-addtile"><i class="ti ti-camera-plus" aria-hidden="true"></i><span>Ajouter</span></label>`;
+  document.getElementById("sell-photos").innerHTML=html;
+}
+async function doSellSubmit(e){
+  e.preventDefault();
+  if(!user){navTo("sell");return false;}
+  if(photosLoading){showToast("sell-msg","La photo est encore en préparation, attends quelques secondes.",true,4000);return false;}
+  if(!sellPhotos.length){showToast("photo-msg","Ajoute au moins une photo de l'article 📷",true,4000);document.getElementById("sell-photos").scrollIntoView({behavior:"smooth",block:"center"});return false;}
+  const form=e.target;busy(form,true,"Publication...");
+  const row={
+    title:document.getElementById("sell-title").value.trim(),
+    price:Number(document.getElementById("sell-price").value)||0,
+    condition:document.getElementById("sell-cond").value,
+    category:document.getElementById("sell-cat").value,
+    photos:sellPhotos,
+    location:document.getElementById("sell-loc").value.trim()||"Casablanca",
+    phone:document.getElementById("sell-phone").value.trim(),
+    description:document.getElementById("sell-desc").value.trim()
+  };
+  try{
+    const res=await fetch("/api/items",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(row)});
+    if(res.status===401){user=null;renderHeader();navTo("sell");return false;}
+    if(!res.ok){const j=await res.json().catch(()=>({}));throw new Error(j.error||"Erreur lors de la publication");}
+  }catch(err){console.error(err);showToast("sell-msg",(err.message||"Erreur lors de la publication")+" ❌",true,5000);busy(form,false);return false;}
+  busy(form,false);
+  showToast("sell-msg","Annonce publiée ✅");
+  form.reset();
+  sellPhotos=[];renderSellPhotos();fillSellCat();
+  document.getElementById("sell-loc").value="Casablanca";
+  await loadItems();
+  setTimeout(()=>{act="Tous";q="";renderCats();renderGrid();switchView("home");},1100);
+  return false;
+}
+
+/* ===== produit ===== */
+let prodPhotoIdx=0;
+function prodPhotos(){const i=currentProduct;return i?((i.photos&&i.photos.length)?i.photos:(i.img?[i.img]:[])):[];}
+function showProdPhoto(k){
+  const photos=prodPhotos();if(!photos[k])return;
+  prodPhotoIdx=k;
+  const imgEl=document.getElementById("prod-img");
+  imgEl.style.background=`#F4EEE6 url('${esc(photos[k])}') center/contain no-repeat`;imgEl.innerHTML="";imgEl.style.cursor="zoom-in";
+  document.querySelectorAll("#prod-thumbs button").forEach((b,n)=>b.classList.toggle("on",n===k));
+}
+function openLightbox(){
+  const photos=prodPhotos();if(!photos.length)return;
+  let lb=document.getElementById("kf-lightbox");
+  if(!lb){lb=document.createElement("div");lb.id="kf-lightbox";lb.className="kf-lightbox";lb.onclick=()=>lb.classList.remove("on");lb.innerHTML='<img alt="">';document.body.appendChild(lb);}
+  lb.querySelector("img").src=photos[prodPhotoIdx];lb.classList.add("on");
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("kf-lightbox")?.classList.remove("on");});
+function openProduct(id){
+  currentProduct=items.find(i=>i.id===id);
+  if(!currentProduct)return;
+  const i=currentProduct;
+  const imgEl=document.getElementById("prod-img");
+  const photos=(i.photos&&i.photos.length)?i.photos:(i.img?[i.img]:[]);
+  if(photos.length){showProdPhoto(0);}
+  else{imgEl.style.background=i.bg;imgEl.innerHTML=`<i class="ti ${i.ic}" style="color:${i.cl}" aria-hidden="true"></i>`;imgEl.style.cursor="default";}
+  document.getElementById("prod-thumbs").innerHTML=photos.length>1?photos.map((p,k)=>`<button type="button" class="${k===0?"on":""}" style="background-image:url('${esc(p)}')" onclick="showProdPhoto(${k})" aria-label="Photo ${k+1}"></button>`).join(""):"";
+  document.getElementById("prod-title").textContent=i.n;
+  document.getElementById("prod-price").textContent=fmt(i.p);
+  document.getElementById("prod-badges").innerHTML=`
+    <span class="kf-pbadge"><i class="ti ti-check" aria-hidden="true"></i>${esc(i.c)}</span>
+    <span class="kf-pbadge"><i class="ti ti-tag" aria-hidden="true"></i>${esc(i.cat)}</span>
+    <span class="kf-pbadge"><i class="ti ti-map-pin" aria-hidden="true"></i>${esc(i.loc)}</span>`;
+  document.getElementById("prod-desc").textContent=i.desc||"Aucune description fournie par le vendeur.";
+  document.getElementById("prod-savatar").textContent=initialsOf(i.s);
+  document.getElementById("prod-sname").textContent=i.s;
+  document.getElementById("prod-sloc").textContent=i.loc+" · Vendeur vérifié";
+  document.getElementById("prod-msgconf").style.display="none";
+  document.getElementById("prod-msgtext").value="";
+  switchView("product");
+}
+function callSeller(){
+  const num=currentProduct.phone.replace(/[^\d+]/g,"");
+  window.location.href="tel:"+num;
+}
+function waSeller(){
+  let num=currentProduct.phone.replace(/[^\d]/g,"");
+  if(num.startsWith("0")) num="212"+num.slice(1);
+  window.open("https://wa.me/"+num,"_blank");
+}
+function sendMsg(e){
+  e.preventDefault();
+  const text=document.getElementById("prod-msgtext").value.trim();
+  let num=currentProduct.phone.replace(/[^\d]/g,"");
+  if(num.startsWith("0")) num="212"+num.slice(1);
+  window.open("https://wa.me/"+num+"?text="+encodeURIComponent(text),"_blank");
+  document.getElementById("prod-msgtext").value="";
+  return false;
+}
+
+/* ===== init ===== */
+document.getElementById("kf-q").addEventListener("keyup",e=>{if(e.key==="Enter")doSearch();});
+renderCats();fillSellCat();renderSellPhotos();renderHeader();initAuth().then(loadItems);
+</script>
+</body>
+</html>

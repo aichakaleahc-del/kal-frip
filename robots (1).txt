@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kalefrip.netlify.app/sitemap.xml
